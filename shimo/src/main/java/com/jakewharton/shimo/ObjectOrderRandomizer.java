@@ -7,13 +7,15 @@ import java.lang.reflect.Type;
 import java.util.Random;
 import java.util.Set;
 
+import static java.util.Objects.requireNonNull;
+
 public final class ObjectOrderRandomizer {
   public static JsonAdapter.Factory create() {
-    return create(new Random());
+    return new Factory(new Random());
   }
 
   public static JsonAdapter.Factory create(Random random) {
-    return new Factory(random);
+    return new Factory(requireNonNull(random));
   }
 
   private static final class Factory implements JsonAdapter.Factory {
