@@ -17,7 +17,7 @@ public class DeserializingTest {
   private final Random random = new Random(1234);
 
   @Test public void keysReordered() throws IOException {
-    final List<String> keysSeen = new ArrayList<String>();
+    final List<String> keysSeen = new ArrayList<>();
     Moshi moshi = new Moshi.Builder()
         .add(ObjectOrderRandomizer.create(random))
         .add(new Object() {
@@ -41,7 +41,7 @@ public class DeserializingTest {
   }
 
   @Test public void nestedKeysReordered() throws IOException {
-    final List<String> keysSeen = new ArrayList<String>();
+    final List<String> keysSeen = new ArrayList<>();
     Moshi moshi = new Moshi.Builder()
         .add(ObjectOrderRandomizer.create(random))
         .add(new Object() {

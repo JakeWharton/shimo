@@ -23,10 +23,10 @@ final class OrderRandomizingAdapter extends JsonAdapter<Object> {
   }
 
   private Map<String, Object> shuffleMap(Map<String, ?> ordered) {
-    ArrayList<String> keys = new ArrayList<String>(ordered.keySet());
+    ArrayList<String> keys = new ArrayList<>(ordered.keySet());
     Collections.shuffle(keys, random);
 
-    Map<String, Object> shuffled = new LinkedHashMap<String, Object>(ordered.size());
+    Map<String, Object> shuffled = new LinkedHashMap<>(ordered.size());
     for (String key : keys) {
       shuffled.put(key, ordered.get(key));
     }

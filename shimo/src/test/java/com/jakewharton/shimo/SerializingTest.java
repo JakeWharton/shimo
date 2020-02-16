@@ -37,10 +37,10 @@ public class SerializingTest {
   }
 
   @Test public void mapsReordered() {
-    Map<String, Object> nested = new LinkedHashMap<String, Object>();
+    Map<String, Object> nested = new LinkedHashMap<>();
     nested.put("one", "one");
     nested.put("two", "two");
-    Map<String, Object> map = new LinkedHashMap<String, Object>();
+    Map<String, Object> map = new LinkedHashMap<>();
     map.put("string", "string");
     map.put("map", nested);
     @SuppressWarnings("rawtypes") // Being lazy.
