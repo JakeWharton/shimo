@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -47,6 +48,53 @@ final class OrderRandomizingAdapter extends JsonAdapter<Object> {
       Map<String, ?> ordered = ((Map<String, ?>) jsonValue);
       jsonValue = shuffleMap(ordered);
     }
-    writer.jsonValue(jsonValue);
+    // TODO requires Moshi 1.10 or newer:
+    //  writer.jsonValue(jsonValue);
+    writeJsonValue(writer, jsonValue);
+  }
+
+  private static void writeJsonValue(JsonWriter writer, Object value) throws IOException {
+    if (value instanceof Map<?, ?>) {
+      writer.beginObject();
+      for (Map.Entry<?, ?> entry : ((Map<?, ?>) value).entrySet()) {
+        Object key = entry.getKey();
+        if (!(key instanceof String)) {
+          throw new IllegalArgumentException(key == null
+              ? "Map keys must be non-null"
+              : "Map keys must be of type String: " + key.getClass().getName());
+        }
+        writer.name(((String) key));
+        writeJsonValue(writer, entry.getValue());
+      }
+      writer.endObject();
+
+    } else if (value instanceof List<?>) {
+      writer.beginArray();
+      for (Object element : ((List<?>) value)) {
+        writeJsonValue(writer, element);
+      }
+      writer.endArray();
+
+    } else if (value instanceof String) {
+      writer.value(((String) value));
+
+    } else if (value instanceof Boolean) {
+      writer.value(((Boolean) value).booleanValue());
+
+    } else if (value instanceof Double) {
+      writer.value(((Double) value).doubleValue());
+
+    } else if (value instanceof Long) {
+      writer.value(((Long) value).longValue());
+
+    } else if (value instanceof Number) {
+      writer.value(((Number) value));
+
+    } else if (value == null) {
+      writer.nullValue();
+
+    } else {
+      throw new IllegalArgumentException("Unsupported type: " + value.getClass().getName());
+    }
   }
 }

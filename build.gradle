@@ -1,6 +1,6 @@
 buildscript {
   ext.deps = [
-      'moshi': 'com.squareup.moshi:moshi:1.10.0-SNAPSHOT',
+      'moshi': 'com.squareup.moshi:moshi:1.9.2',
       'junit': 'junit:junit:4.13',
       'truth': 'com.google.truth:truth:1.0',
   ]
@@ -12,8 +12,5 @@ subprojects {
 
   repositories {
     mavenCentral()
-    maven {
-      url 'https://oss.sonatype.org/content/repositories/snapshots/'
-    }
   }
 }
