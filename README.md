@@ -54,14 +54,14 @@ Download
 Download [the latest JAR][dl] or depend via Gradle:
 
 ```kotlin
-implementation("com.jakewharton.moshi:shimo:0.1.0")
+implementation("com.jakewharton.moshi:shimo:0.1.1")
 ```
 or Maven:
 ```xml
 <dependency>
   <groupId>com.jakewharton.moshi</groupId>
   <artifactId>shimo</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
