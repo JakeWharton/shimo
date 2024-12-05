@@ -1,7 +1,7 @@
 buildscript {
   ext.deps = [
       'moshi': 'com.squareup.moshi:moshi:1.10.0',
-      'junit': 'junit:junit:4.13',
+      'junit': 'junit:junit:4.13.2',
       'truth': 'com.google.truth:truth:1.4.4',
   ]
 }
