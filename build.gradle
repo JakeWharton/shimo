@@ -1,16 +1,30 @@
-buildscript {
-  ext.deps = [
-      'moshi': 'com.squareup.moshi:moshi:1.15.2',
-      'junit': 'junit:junit:4.13.2',
-      'truth': 'com.google.truth:truth:1.4.5',
-  ]
-}
+import static org.gradle.api.JavaVersion.VERSION_1_8
 
-subprojects {
-  group('com.jakewharton.moshi')
-  version('0.2.0-SNAPSHOT')
+buildscript {
+  dependencies {
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.34.0'
+  }
 
   repositories {
     mavenCentral()
   }
+}
+
+apply plugin: 'java-library'
+apply plugin: 'com.vanniktech.maven.publish'
+
+java {
+  sourceCompatibility = VERSION_1_8
+  targetCompatibility = VERSION_1_8
+}
+
+dependencies {
+  api 'com.squareup.moshi:moshi:1.15.2'
+
+  testImplementation 'junit:junit:4.13.2'
+  testImplementation 'com.google.truth:truth:1.4.5'
+}
+
+repositories {
+  mavenCentral()
 }
