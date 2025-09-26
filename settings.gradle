@@ -1,3 +1,1 @@
-rootProject.name = 'shimo-root'
-
-include ':shimo'
+rootProject.name = 'shimo'
