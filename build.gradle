@@ -2,7 +2,7 @@ import static org.gradle.api.JavaVersion.VERSION_1_8
 
 buildscript {
   dependencies {
-    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.34.0'
+    classpath libs.publishPlugin
   }
 
   repositories {
@@ -19,10 +19,10 @@ java {
 }
 
 dependencies {
-  api 'com.squareup.moshi:moshi:1.15.2'
+  api libs.moshi
 
-  testImplementation 'junit:junit:4.13.2'
-  testImplementation 'com.google.truth:truth:1.4.5'
+  testImplementation libs.junit
+  testImplementation libs.truth
 }
 
 repositories {
